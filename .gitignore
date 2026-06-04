@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Raw FASTQ files
+data/raw_fastq/*.fastq
+data/raw_fastq/*.fastq.gz
+data/raw_fastq/*.fq
+data/raw_fastq/*.fq.gz
+
+# Reference files
+data/reference/*
+!data/reference/README.md
+
+# Large Cell Ranger outputs
+results/cellranger/*/outs/possorted_genome_bam.bam
+results/cellranger/*/outs/possorted_genome_bam.bam.bai
+results/cellranger/*/outs/molecule_info.h5
+results/cellranger/*/outs/raw_feature_bc_matrix.h5
+
+# Python
+__pycache__/
+*.pyc
+
+# Temporary files
+tmp/
