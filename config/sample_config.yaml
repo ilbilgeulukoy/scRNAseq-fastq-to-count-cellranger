@@ -1,9 +1,25 @@
+# Example configuration file for a Cell Ranger count run.
+# Edit these values before running the workflow on a server.
+
+project_name: ovarian_cancer_scrnaseq
 sample_id: sample01
-project: ovarian_cancer_scrnaseq
-technology: 10x Genomics single-cell RNA-seq
-cellranger_version: to_be_completed
-reference: GRCh38
+
+# 10x Genomics assay type
+assay: 10x_3prime_gene_expression
+
+# Paths on the server
 fastq_directory: /path/to/fastq_directory
 transcriptome_reference: /path/to/refdata-gex-GRCh38
+
+# Cell Ranger run parameters
+cellranger_version: to_be_completed
 localcores: 16
 localmem: 64
+
+# Expected Cell Ranger output
+output_id: sample01_cellranger_count
+
+# Notes
+notes: >
+  Raw FASTQ files and reference genome files are not stored in this GitHub repository.
+  The Cell Ranger count step is intended to be executed on a Linux server or HPC environment.
