@@ -1,0 +1,9 @@
+sample_id: sample01
+project: ovarian_cancer_scrnaseq
+technology: 10x Genomics single-cell RNA-seq
+cellranger_version: to_be_completed
+reference: GRCh38
+fastq_directory: /path/to/fastq_directory
+transcriptome_reference: /path/to/refdata-gex-GRCh38
+localcores: 16
+localmem: 64
