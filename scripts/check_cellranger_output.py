@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 
+"""
+Check whether a Cell Ranger count output directory contains the expected files.
+
+Usage:
+    python scripts/check_cellranger_output.py results/cellranger/sample01_cellranger_count
+"""
+
 from pathlib import Path
 import sys
 
-def check_cellranger_output(output_dir):
-    output_dir = Path(output_dir)
+
+def check_cellranger_output(output_dir: str) -> int:
+    output_path = Path(output_dir)
 
     required_files = [
         "outs/web_summary.html",
@@ -17,31 +25,38 @@ def check_cellranger_output(output_dir):
         "outs/raw_feature_bc_matrix/features.tsv.gz",
     ]
 
-    print(f"Checking Cell Ranger output: {output_dir}\n")
+    print(f"Checking Cell Ranger output directory: {output_path}\n")
 
-    missing = []
+    if not output_path.exists():
+        print(f"[ERROR] Output directory does not exist: {output_path}")
+        return 1
 
-    for file_path in required_files:
-        full_path = output_dir / file_path
-        if full_path.exists():
-            print(f"[OK] {file_path}")
+    missing_files = []
+
+    for relative_file in required_files:
+        full_file = output_path / relative_file
+
+        if full_file.exists():
+            print(f"[OK]      {relative_file}")
         else:
-            print(f"[MISSING] {file_path}")
-            missing.append(file_path)
+            print(f"[MISSING] {relative_file}")
+            missing_files.append(relative_file)
 
     print("\nSummary")
     print("-------")
 
-    if missing:
-        print(f"{len(missing)} required files are missing.")
-        sys.exit(1)
-    else:
-        print("All required Cell Ranger output files were found.")
-        sys.exit(0)
+    if missing_files:
+        print(f"{len(missing_files)} required file(s) are missing.")
+        return 1
+
+    print("All required Cell Ranger output files were found.")
+    return 0
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python scripts/check_cellranger_output.py <cellranger_output_directory>")
         sys.exit(1)
 
-    check_cellranger_output(sys.argv[1])
+    exit_code = check_cellranger_output(sys.argv[1])
+    sys.exit(exit_code)
