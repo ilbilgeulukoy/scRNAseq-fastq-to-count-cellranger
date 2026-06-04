@@ -120,3 +120,25 @@ This folder contains:
 - matrix.mtx.gz
 
 These files can be loaded into downstream analysis tools such as Scanpy or Seurat.
+
+## Testing the output validation script
+
+This repository includes a lightweight mock Cell Ranger output folder for testing the validation script without storing large sequencing files.
+
+Run:
+
+python scripts/check_cellranger_output.py example_outputs/mock_cellranger_count
+
+Expected result:
+
+All required Cell Ranger output files were found.
+
+The script also extracts selected QC metrics from:
+
+example_outputs/mock_cellranger_count/outs/metrics_summary.csv
+
+## Important note about example outputs
+
+The files in example_outputs/mock_cellranger_count are lightweight placeholder files designed only to test repository structure and script behavior.
+
+They are not real Cell Ranger output files and should not be used for biological interpretation.
