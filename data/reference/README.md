@@ -11,4 +11,4 @@ refdata-gex-GRCh38
 The path to the reference transcriptome should be provided in:
 
 config/sample_config.yaml
-scripts/run_cellranger_count.sh
+scripts/run_cellranger_count.py

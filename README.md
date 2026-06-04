@@ -28,7 +28,7 @@ Quality metrics and gene-by-cell count matrix
 Ready for downstream analysis
 
 
-cat > scripts/run_cellranger_count.sh << 'EOF'
+cat > scripts/run_cellranger_count.py << 'EOF'
 #!/bin/bash
 
 # Example Cell Ranger count command
@@ -74,11 +74,11 @@ Update the following fields:
 
 Edit:
 
-scripts/run_cellranger_count.sh
+scripts/run_cellranger_count.py
 
 Then run it on a Linux server where Cell Ranger is installed:
 
-bash scripts/run_cellranger_count.sh
+bash scripts/run_cellranger_count.py
 
 ### 4. Expected output
 
